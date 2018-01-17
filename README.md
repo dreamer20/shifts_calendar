@@ -1,0 +1,1 @@
+Small app that calculates work shifts.
