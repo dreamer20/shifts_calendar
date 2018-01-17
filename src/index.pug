@@ -1,0 +1,40 @@
+html
+  head
+    meta(charset='utf-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    title Shift Calendar
+    link(href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" rel="stylesheet")
+    link(href="https://fonts.googleapis.com/css?family=Open+Sans", rel="stylesheet")
+  body
+    .calendar-wrapper
+      h1.calendar-title Расчет смен
+      .calendar-caption-header
+        .calendar-caption-item Пн
+        .calendar-caption-item Вт
+        .calendar-caption-item Ср
+        .calendar-caption-item Чт
+        .calendar-caption-item Пт
+        .calendar-caption-item Сб
+        .calendar-caption-item Вс
+      .calendar
+        .calendar-body
+          #calendar-months.calendar-months.slide-animation
+      .calendar-caption-footer
+        .calendar-caption-wrapper
+          #prevBtn.calendar-btn-prev
+          #date-caption.calendar-caption-date
+          #nextBtn.calendar-btn-next
+    .calendar-inputs-wrapper
+      .control-wrapper
+        label.control-label 
+          .control-description Начать с:
+          select#control-daysOfMonth.control-input
+        label.control-label 
+          .control-description Кол-во выходных дней:
+          input(type="text")#control-daysOff.control-input
+        label.control-label
+          .control-description Кол-во рабочих дней:
+          input(type="text")#control-workDays.control-input
+        .control-btn-wrapper
+          button#calculate-btn.control-btn Расчитать
+
