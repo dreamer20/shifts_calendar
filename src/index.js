@@ -241,7 +241,7 @@ function nextMonth() {
       month;
 
   nextBtn.removeEventListener('click', nextMonth);
-  nextBtn.removeEventListener('click', prevMonth);
+  prevBtn.removeEventListener('click', prevMonth);
   date.setMonth(date.getMonth() + 1);
 
   if (currentMonthInList < calendarMonths.children.length) {
@@ -280,7 +280,7 @@ function prevMonth() {
       left;
 
   prevBtn.removeEventListener('click', prevMonth);
-  prevBtn.removeEventListener('click', nextMonth);
+  nextBtn.removeEventListener('click', nextMonth);
 
 
   currentMonthInList--;
