@@ -29,7 +29,7 @@ var date = new Date(),
     isInvalidData,
     workDays = 0,
     daysOff = 0,
-    oldWidth = getComputedStyle(calendarMonths).width,
+    oldWidth = parseFloat(getComputedStyle(calendarMonths).width),
     daysLeft,
     resizeTimeout;
 
@@ -241,6 +241,7 @@ function nextMonth() {
       month;
 
   nextBtn.removeEventListener('click', nextMonth);
+  nextBtn.removeEventListener('click', prevMonth);
   date.setMonth(date.getMonth() + 1);
 
   if (currentMonthInList < calendarMonths.children.length) {
@@ -279,6 +280,8 @@ function prevMonth() {
       left;
 
   prevBtn.removeEventListener('click', prevMonth);
+  prevBtn.removeEventListener('click', nextMonth);
+
 
   currentMonthInList--;
   date.setMonth(date.getMonth() - 1);
@@ -402,13 +405,19 @@ function actualResizeHandler() {
       newWidth,
       oldleft;
 
+
   newWidth = getComputedStyle(calendarMonths).width;
-  oldWidth = parseFloat(oldWidth);
   newWidth = parseFloat(newWidth);
+
+  if (currentMonthInList === 1) {
+    oldWidth = newWidth;
+    return;
+  
+  }
+
   oldleft = parseFloat(calendarMonths.style.left);
   rest = oldWidth - newWidth;
   rest = Math.round(rest * 1000) / 1000;
-
   if (currentMonthInList-1 > 0) {
     rest = (rest * (currentMonthInList-1));
   }
